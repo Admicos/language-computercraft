@@ -1,0 +1,138 @@
+comment: "ComputerCraft Syntax: Version 1.2"
+fileTypes: [
+  "lua"
+]
+foldingStartMarker: "^\\s*\\b(function|local\\s+function|if|elseif|for)\\b|{[ \\t]*$|\\[\\["
+foldingStopMarker: "\\bend\\b|^\\s*}|\\]\\]"
+name: "ComputerCraft"
+patterns: [
+  {
+    captures:
+      "1":
+        name: "keyword.control.computercraft"
+      "2":
+        name: "entity.name.function.scope.computercraft"
+      "3":
+        name: "entity.name.function.computercraft"
+      "4":
+        name: "punctuation.definition.parameters.begin.computercraft"
+      "5":
+        name: "variable.parameter.function.computercraft"
+      "6":
+        name: "punctuation.definition.parameters.end.computercraft"
+    match: "\\b(function)\\s+([a-zA-Z_.:]+[.:])?([a-zA-Z_]\\w*)\\s*(\\()([^)]*)(\\))"
+    name: "meta.function.computercraft"
+  }
+  {
+    captures:
+      "1":
+        name: "entity.name.function.scope.computercraft"
+      "2":
+        name: "entity.name.function.computercraft"
+      "3":
+        name: "keyword.operator.computercraft"
+      "4":
+        name: "keyword.control.computercraft"
+      "5":
+        name: "punctuation.definition.parameters.begin.computercraft"
+      "6":
+        name: "variable.parameter.function.computercraft"
+      "7":
+        name: "punctuation.definition.parameters.end.computercraft"
+    match: "([a-zA-Z_.:]+[.:])?([a-zA-Z_]\\w*)\\s*(\\=)\\s*(function)\\s*(\\()([^)]*)(\\))"
+    name: "meta.function.computercraft"
+  }
+  {
+    match: "(?<![\\d.])\\s0x[a-fA-F\\d]+|\\b\\d+(\\.\\d+)?([eE]-?\\d+)?|\\.\\d+([eE]-?\\d+)?"
+    name: "constant.numeric.computercraft"
+  }
+  {
+    begin: "'"
+    beginCaptures:
+      "0":
+        name: "punctuation.definition.string.begin.computercraft"
+    end: "'"
+    endCaptures:
+      "0":
+        name: "punctuation.definition.string.end.computercraft"
+    name: "string.quoted.single.computercraft"
+    patterns: [
+      {
+        match: "\\\\."
+        name: "constant.character.escape.computercraft"
+      }
+    ]
+  }
+  {
+    begin: "\""
+    beginCaptures:
+      "0":
+        name: "punctuation.definition.string.begin.computercraft"
+    end: "\""
+    endCaptures:
+      "0":
+        name: "punctuation.definition.string.end.computercraft"
+    name: "string.quoted.double.computercraft"
+    patterns: [
+      {
+        match: "\\\\."
+        name: "constant.character.escape.computercraft"
+      }
+    ]
+  }
+  {
+    begin: "(?<!--)\\[(=*)\\["
+    beginCaptures:
+      "0":
+        name: "punctuation.definition.string.begin.computercraft"
+    end: "\\]\\1\\]"
+    endCaptures:
+      "0":
+        name: "punctuation.definition.string.end.computercraft"
+    name: "string.quoted.other.multiline.computercraft"
+  }
+  {
+    begin: "--\\[(=*)\\["
+    captures:
+      "0":
+        name: "punctuation.definition.comment.computercraft"
+    end: "\\]\\1\\]"
+    name: "comment.block.computercraft"
+  }
+  {
+    captures:
+      "1":
+        name: "punctuation.definition.comment.computercraft"
+    match: "(--)(?!\\[\\[).*$\\n?"
+    name: "comment.line.double-dash.computercraft"
+  }
+  {
+    match: "\\b(break|do|else|for|if|elseif|return|then|repeat|while|until|end|function|local|in)\\b"
+    name: "keyword.control.computercraft"
+  }
+  {
+    match: "(?<![^.]\\.|:)\\b(false|nil|true|_G|_VERSION|math\\.(pi|huge)|gps\\.CHANNEL_GPS|(colors|colours)\\.(white|orange|magenta|lightBlue|yellow|lime|pink|cyan|purple|blue|brown|green|red|black)|colours\\.grey|colors\\.gray|colours\\.lightGrey|colors\\.lightGray|keys\\.([a-z]|(f[1-9]{1}([0-5])?)|(numPad[0-9])|zero|one|two|three|four|five|six|seven|eight|nine|home|period|comma|numPadEquals|kana|end|return|up|down|right|left|rightShift|leftShift|rightCtrl|leftCtrl|tab|pageDown|pageUp|underscore|colon|semiColon|slash|space|enter|delete|backspace|rightAlt|leftAlt|backslash|rightBracket|leftBracket|numPadSubtract|numPadEnter|capsLock|stop|kanji|insert|numPadAdd|scollLock|yen|ax|equals|numPadDecimal|numLock|minus|pause|numPadComma|cimcumflex|noconvert|grave|apostrophe|at|convert|numPadDivide|multiply)|rednet\\.CHANNEL_BROADCAST)\\b|(?<![.])\\.{3}(?!\\.)"
+    name: "constant.language.computercraft"
+  }
+  {
+    match: "(?<![^.]\\.|:)\\b(self)\\b"
+    name: "variable.language.self.computercraft"
+  }
+  {
+    match: "(?<![^.]\\.|:)\\b(assert|dofile|error|getfenv|getmetatable|ipairs|loadfile|loadstring|pairs|pcall|print|rawequal|rawget|rawset|setfenv|setmetatable|sleep|next|select|tonumber|tostring|type|unpack|write|read|xpcall|printError)\\b(?=[( {\"'])"
+    name: "support.function.computercraft"
+  }
+  {
+    match: "(?<![^.]\\.|:)\\b(bit\\.(blogic_rshift|tobits|blshift|brshift|bxor|bor|band|bnot|tonumb)|(colors|colours)\\.(combine|subtract|test)|coroutine\\.(create|resume|running|status|wrap|yield)|disk\\.(isPresent|hasData|getMountPath|getLabel|setLabel|getID|hasAudio|getAudioTitle|playAudio|stopAudio|eject)|fs\\.(list|exists|isDir|isReadOnly|getFreeSpace|getName|getDrive|getSize|makeDir|move|copy|delete|combine|open)|gps\\.locate|help\\.(path|setPath|lookup|topics)|http\\.(request|get|post)|io\\.(close|open|read|write|type)|math\\.(abs|acos|asin|atan2?|ceil|cosh?|deg|exp|floor|fmod|frexp|ldexp|log|log10|max|min|modf|pow|rad|random|randomseed|sinh?|sqrt|tanh?)|os\\.(version|getComputerID|computerID|getComputerLabel|computerLabel|setComputerLabel|run|loadAPI|unloadAPI|pullEvent|pullEventRaw|queueEvent|clock|startTimer|sleep|time|day|setAlarm|shutdown|reboot)|paintutils\\.(loadImage|drawImage|drawPixel|drawLine)|parallel\\.(waitForAny|waitForAll)|peripheral\\.(isPresent|getType|getMethods|call|wrap|getNames)|rednet\\.(run|open|close|announce|send|broadcast|receive|isOpen)|(rs|redstone)\\.(getSides|getInput|setInput|setOutput|getOutput|setBundledOutput|getBundledOutput|getBundledInput|testBundledInput|getAnalogInput|getAnalogOutput|setAnalogueOutput|setAnalogOutput|getAnalogueOutput|getAnalogueInput|)|shell\\.(exit|dir|setDir|path|setPath|resolve|resolveProgram|aliases|setAlias|clearAlias|programs|run|getRunningProgram)|string\\.(byte|char|dump|find|format|gmatch|gsub|len|lower|match|rep|reverse|sub|upper)|table\\.(foreachi|foreach|getn|concat|insert|maxn|remove|sort)|(term|term\\.native|native)\\.(write|clear|clearLine|getCursorPos|setCursorPos|setCursorBlink|isColor|isColour|getSize|scroll|redirect|restore|setTextColor|setTextColour|setBackgroundColor|setBackgroundColour)|textutils\\.(slowPrint|slowWrite|formatTime|tabulate|pagedTabulate|pagedPrint|serialize|unserialize|urlEncode)|vector\\.new|turtle\\.(craft|forward|back|up|down|turnLeft|turnRight|select|getItemCount|getItemSpace|attack|attackUp|attackDown|dig|digUp|digDown|place|placeUp|placeDown|detect|detectUp|detectDown|compare|compareUp|compareDown|compareTo|drop|dropUp|dropDown|suck|suckUp|suckDown|refuel|getFuelLevel|transferTo)|keys\\.(getName)|emulog\\.(clear|log))\\b(?=[( {])"
+    name: "support.function.library.computercraft"
+  }
+  {
+    match: "\\b(and|or|not)\\b"
+    name: "keyword.operator.computercraft"
+  }
+  {
+    match: "\\+|-|%|#|\\*|\\/|\\^|==?|~=|<=?|>=?|(?<!\\.)\\.{2}(?!\\.)"
+    name: "keyword.operator.computercraft"
+  }
+]
+scopeName: "source.computercraft"
