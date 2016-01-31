@@ -1,6 +1,6 @@
 {
   "name": "language-computercraft",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "GravityScore's Sublime Text computercraft syntax converted to Atom.",
   "keywords": [],
   "repository": "https://github.com/Admicos/language-computercraft",
