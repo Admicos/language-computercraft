@@ -4,6 +4,7 @@ fileTypes: [
 ]
 foldingStartMarker: "^\\s*\\b(function|local\\s+function|if|elseif|for)\\b|{[ \\t]*$|\\[\\["
 foldingStopMarker: "\\bend\\b|^\\s*}|\\]\\]"
+firstLineMatch: "--CC.*"
 name: "ComputerCraft"
 patterns: [
   {
